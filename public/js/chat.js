@@ -1,7 +1,11 @@
 var socket = io();
 let currentAnswer;
 
-const setAnswer = answer => currentAnswer = answer;
+const setAnswer = (answer, event) => {
+  $('.response').removeClass('response-selected');
+  $(event.target).addClass('response-selected');
+  return currentAnswer = answer;
+}
 
 socket.on('timeup', ({ answer }) => {
   socket.emit('answer', { answer: currentAnswer }, function (err) {
@@ -39,6 +43,7 @@ function startGame() {
       window.location.href = '/';
     } else {
       console.log('No error starting game');
+      $('.start-button-container').addClass('hidden');
     }
   });
 }
@@ -86,7 +91,7 @@ socket.on('disconnect', function () {
 socket.on('updateUserList', function (users) {
   const me = getMyUser(users, socket.id);
   if (me.admin) {
-    jQuery('#admin')[0].hidden = false;
+    $('.start-button-container').removeClass('hidden');
   }
 
   var ol = jQuery('<ul></ul>');
