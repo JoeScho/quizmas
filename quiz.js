@@ -2,9 +2,11 @@ module.exports = {
   questions: [
     {
       question: "What is the referee's first name?",
-      answers: [
-        
-      ]
+      answers: {
+        a: 'Anthony',
+        b: 'John'
+      },
+      correct: 'a'
     }
   ]
 }
