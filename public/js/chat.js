@@ -1,7 +1,14 @@
 var socket = io();
 
 const submitAnswer = answer => {
-  console.log(answer);
+  socket.emit('answer', { answer }, function(err) {
+    if (err) {
+      alert(err);
+      window.location.href = '/';
+    } else {
+      console.log('No error starting game');
+    }
+  });
 }
 
 function populateQuestion({ question, answers }) {

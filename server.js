@@ -20,6 +20,11 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('New user connected');
 
+  socket.on('answer', (params, callback) => {
+    console.log(`got answer ${params.answer} for ${users.getUser(socket.id)}`);
+    callback();
+  });
+
   socket.on('join', (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
       return callback('Name and quiz name are required.');
