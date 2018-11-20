@@ -4,9 +4,9 @@ const express = require('express');
 const socketIO = require('socket.io');
 const { questions } = require('./quiz.js');
 
-const {generateMessage, generateLocationMessage} = require ('./utils/message');
-const {isRealString} = require('./utils/validation');
-const {Users} = require('./utils/users');
+const { generateMessage, generateLocationMessage } = require('./utils/message');
+const { isRealString } = require('./utils/validation');
+const { Users } = require('./utils/users');
 
 const publicPath = path.join(__dirname, './public');
 const port = process.env.PORT || 3000;
@@ -14,14 +14,29 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 var users = new Users();
+const QUIZ = 'DAQZ';
 
 app.use(express.static(publicPath));
+
 
 io.on('connection', (socket) => {
   console.log('New user connected');
 
+  const startTimer = answer => {
+    setTimeout(() => {
+      io.to(QUIZ).emit('timeup', { answer });
+    }, 5000)
+  };
+
   socket.on('answer', (params, callback) => {
-    console.log(`got answer ${params.answer} for ${users.getUser(socket.id)}`);
+    console.log(`got answer ${params.answer} for ${JSON.stringify(users.getUser(socket.id))}`);
+    const { correct } = questions[0];
+    if(params.answer === correct) {
+      users.addPoint(socket.id);
+    }
+
+    console.log(JSON.stringify(users.getUserList('DAQZ')))
+
     callback();
   });
 
@@ -53,6 +68,7 @@ io.on('connection', (socket) => {
   socket.on('startGame', (message, callback) => {
     const { correct, ...q1 } = questions[0];
     io.to("DAQZ").emit('gameStarted', q1);
+    startTimer(correct);
     callback();
   });
 

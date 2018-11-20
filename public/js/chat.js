@@ -1,15 +1,24 @@
 var socket = io();
+let currentAnswer;
 
-const submitAnswer = answer => {
-  socket.emit('answer', { answer }, function(err) {
+const setAnswer = answer => currentAnswer = answer;
+
+socket.on('timeup', ({ answer }) => {
+  socket.emit('answer', { answer: currentAnswer }, function (err) {
+    currentAnswer = null;
+
     if (err) {
       alert(err);
-      window.location.href = '/';
-    } else {
-      console.log('No error starting game');
     }
   });
-}
+
+  jQuery('#answer-a')[0].classList.add('wrong');
+  jQuery('#answer-b')[0].classList.add('wrong');
+  jQuery('#answer-c')[0].classList.add('wrong');
+  jQuery('#answer-d')[0].classList.add('wrong');
+  jQuery(`#answer-${answer}`)[0].classList.remove('wrong');
+  jQuery(`#answer-${answer}`)[0].classList.add('correct');
+});
 
 function populateQuestion({ question, answers }) {
   jQuery('#question')[0].textContent = question;
@@ -24,7 +33,7 @@ function populateQuestion({ question, answers }) {
 
 function startGame() {
   console.log('starting game');
-  socket.emit('startGame', {}, function(err) {
+  socket.emit('startGame', {}, function (err) {
     if (err) {
       alert(err);
       window.location.href = '/';
@@ -53,10 +62,10 @@ function scrollToBottom() {
 const getMyUser = (users, myUserId) =>
   users.find(user => user.id === myUserId)
 
-socket.on('connect', function() {
+socket.on('connect', function () {
   var params = jQuery.deparam(window.location.search);
 
-  socket.emit('join', params, function(err) {
+  socket.emit('join', params, function (err) {
     if (err) {
       alert(err);
       window.location.href = '/';
@@ -66,29 +75,29 @@ socket.on('connect', function() {
   });
 });
 
-socket.on('gameStarted', function(question) {
+socket.on('gameStarted', function (question) {
   populateQuestion(question);
 });
 
-socket.on('disconnect', function() {
+socket.on('disconnect', function () {
   console.log('Disconnected from server');
 });
 
-socket.on('updateUserList', function(users) {
+socket.on('updateUserList', function (users) {
   const me = getMyUser(users, socket.id);
   if (me.admin) {
     jQuery('#admin')[0].hidden = false;
   }
 
   var ol = jQuery('<ol></ol>');
-  users.forEach(function(user) {
+  users.forEach(function (user) {
     ol.append(jQuery('<li></li>').text(user.name));
   });
 
   jQuery('#users').html(ol);
 });
 
-socket.on('newMessage', function(message) {
+socket.on('newMessage', function (message) {
   var formattedTime = moment(message.createdAt).format('h:mm a');
   var template = jQuery('#message-template').html();
   var html = Mustache.render(template, {
@@ -101,7 +110,7 @@ socket.on('newMessage', function(message) {
   scrollToBottom();
 });
 
-socket.on('newLocationMessage', function(message) {
+socket.on('newLocationMessage', function (message) {
   var formattedTime = moment(message.createdAt).format('h:mm a');
   var template = jQuery('#location-message-template').html();
   var html = Mustache.render(template, {
@@ -114,33 +123,33 @@ socket.on('newLocationMessage', function(message) {
   scrollToBottom();
 });
 
-jQuery('#message-form').on('submit', function(e) {
+jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();
 
   var messageTextbox = jQuery('[name=message]');
 
   socket.emit('createMessage', {
     text: messageTextbox.val()
-  }, function() {
+  }, function () {
     messageTextbox.val('');
   });
 });
 
 var locationButton = jQuery('#send-location');
-locationButton.on('click', function() {
+locationButton.on('click', function () {
   if (!navigator.geolocation) {
     return alert('Geolocation not supported by your browser');
   }
 
   locationButton.attr('disabled', 'disabled').text('Sending location...');
 
-  navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function (position) {
     locationButton.removeAttr('disabled').text('Send location');
     socket.emit('createLocationMessage', {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     });
-  }, function() {
+  }, function () {
     locationButton.removeAttr('disabled').text('Send location');
     alert('Unable to fetch location.');
   });
