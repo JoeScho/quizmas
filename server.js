@@ -2,6 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
+const { questions } = require('./quiz.js');
 
 const {generateMessage, generateLocationMessage} = require ('./utils/message');
 const {isRealString} = require('./utils/validation');
@@ -45,7 +46,8 @@ io.on('connection', (socket) => {
 
   // admin started game
   socket.on('startGame', (message, callback) => {
-    io.to("DAQZ").emit('gameStarted', "gfjdksafbjkdsa");
+    const { correct, ...q1 } = questions[0];
+    io.to("DAQZ").emit('gameStarted', q1);
     callback();
   });
 

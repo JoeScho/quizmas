@@ -1,5 +1,20 @@
 var socket = io();
 
+const submitAnswer = answer => {
+  console.log(answer);
+}
+
+function populateQuestion({ question, answers }) {
+  jQuery('#question')[0].textContent = question;
+
+  jQuery('#answer-a')[0].textContent = answers.a;
+  jQuery('#answer-b')[0].textContent = answers.b;
+  jQuery('#answer-c')[0].textContent = answers.c;
+  jQuery('#answer-d')[0].textContent = answers.d;
+
+  jQuery('#daquestion')[0].hidden = false;
+}
+
 function startGame() {
   console.log('starting game');
   socket.emit('startGame', {}, function(err) {
@@ -44,8 +59,8 @@ socket.on('connect', function() {
   });
 });
 
-socket.on('gameStarted', function() {
-  alert('server initiated the game');
+socket.on('gameStarted', function(question) {
+  populateQuestion(question);
 });
 
 socket.on('disconnect', function() {
