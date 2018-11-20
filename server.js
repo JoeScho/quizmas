@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
 
   socket.on('join', (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
-      return callback('Name and room name are required.');
+      return callback('Name and quiz name are required.');
     }
 
     socket.join(params.room);
@@ -40,6 +40,12 @@ io.on('connection', (socket) => {
     if (user && isRealString(message.text)) {
       io.to(user.room).emit('newMessage', generateMessage(user.name, message.text));
     }
+    callback();
+  });
+
+  // admin started game
+  socket.on('startGame', (message, callback) => {
+    io.to("DAQZ").emit('gameStarted', "gfjdksafbjkdsa");
     callback();
   });
 
