@@ -1,20 +1,178 @@
-.correct {
-  background-color: green;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'DAZNOscine', 'Oscine', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
 }
 
-.wrong {
-  background-color: red;
+h4,
+h5,
+h6 {
+  font-family: 'DAZNTrim', 'AxisStd', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+}
+
+.chat__sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__sidebar img {
+  margin: 2rem auto 1rem auto;
+}
+
+.chat__sidebar h3 {
+  text-align: center;
+}
+
+.start-button-container.hidden {
+  display: none;
 }
 
 .start-button-container {
+  display: flex;
   background-color: #0c161c;
   height: 100%;
   width: 100%;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#logo {
-  margin: 0 auto
+button {
+  border: none;
+  background-color: #f7ff1a;
+  color: #0c161c;
+  cursor: pointer;
+  font-family: font-family: 'DAZNOscine', 'Oscine', 'Helvetica Neue', Helvetica, Arial,
+  sans-serif;
+  
+  font-weight: bold;
+  padding: 10px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  border: none;
+  background-color: #ced100;
+  color: #0c161c;
+}
+
+.start-button {
+  font-size: 2rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 400px;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: #ced100;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.daquestion {
+  background-color: #0c161c;
+  color: #ffffff;
+}
+
+.daquestion-responses {
+  display: flex;
+  justify-content: center;
+}
+
+.daquestion-responses button {
+  background-color: #252d32;
+  border: 5px solid #252d32;
+  color: #ffffff;
+  margin: 10px;
+}
+
+.daquestion-responses .response-selected {
+  border: 5px solid #f7ff1a;
+}
+
+.daquestion-responses .correct {
+  background-color: #f7ff1a;
+  border: 5px solid #f7ff1a;
+  color: #0c161c;
+  transform: scale(1.2);
+}
+
+.daquestion-responses .wrong {
+  background-color: #252d32;
+  border: 5px solid #2c3135;
+  color: #3d4549;
+}
+
+.daquestion-responses .response-selected.wrong {
+  border: 5px solid #2c3135;
+}
+
+.wrong:hover {
+  background-color: #252d32;
+  border: 5px solid #2c3135;
+  color: #3d4549;
+}
+
+@media (max-width: 600px) {
+  * {
+    font-size: 1rem;
+  }
+
+  .chat {
+    flex-direction: column;
+  }
+
+  .chat__sidebar {
+    height: 30vh;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  .chat__sidebar img {
+    width: 50px;
+    margin: 5px auto 0 auto;
+  }
+
+  .chat__sidebar h3 {
+    font-size: 1rem;
+  }
+
+  .chat__sidebar li {
+    background: #252d32;
+    border: 0;
+    padding: 0 5px 0 5px;
+    margin: 2px 5px 2px 5px;
+    text-align: center;
+  }
+
+  .chat__main {
+    height: 70vh;
+    width: 100%
+  }
+
+  .chat__footer {
+    flex-direction: column;
+  }
+
+  .chat__footer form {
+    margin-bottom: 10px;
+  }
+
+  .chat__footer button {
+    margin-right: 0px;
+  }
+
+  .daquestion-responses {
+    flex-direction: column;
+  }
+  
+  .daquestion-responses button {
+    margin: 10px;
+  }
 }

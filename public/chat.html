@@ -19,17 +19,17 @@
   </div>
 
   <div class="chat__main">
-    <div class="start-button-container">
-      <button id="admin" onClick="startGame()" hidden>start quiz</button>
+    <div class="start-button-container hidden">
+      <button class="start-button" id="admin" onClick="startGame()">start quiz</button>
     </div>
 
-    <div id="daquestion" hidden=true>
+    <div id="daquestion" class="daquestion" hidden=true>
       <h3 id="question"></h3>
-      <div>
-        <button onClick="setAnswer('a')" id="answer-a"></button>
-        <button onClick="setAnswer('b')" id="answer-b"></button>
-        <button onClick="setAnswer('c')" id="answer-c"></button>
-        <button onClick="setAnswer('d')" id="answer-d"></button>
+      <div class="daquestion-responses">
+        <button class="response" onClick="setAnswer('a', event)" id="answer-a"></button>
+        <button class="response" onClick="setAnswer('b', event)" id="answer-b"></button>
+        <button class="response" onClick="setAnswer('c', event)" id="answer-c"></button>
+        <button class="response" onClick="setAnswer('d', event)" id="answer-d"></button>
       </div>
     </div>
 
