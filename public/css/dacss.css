@@ -158,7 +158,7 @@ button:hover {
   }
 
   .start-button-container {
-    height: 30vh;
+    height: 50vh;
   }
 
   .daquestion {
@@ -167,6 +167,10 @@ button:hover {
 
   .chat__main {
     width: 100%
+  }
+
+  .chat__messages {
+    height: 30vh;
   }
 
   .chat__footer {

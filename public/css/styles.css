@@ -138,6 +138,7 @@ button:disabled {
 }
 
 .chat__messages {
+  height: 50%;
   list-style-type: none;
   padding: 10px;
   background-color: #0c161c;
