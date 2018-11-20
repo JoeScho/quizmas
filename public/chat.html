@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>WERDASHT</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/dacss.css">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/dacss.css" />
+    <link rel="stylesheet" href="/css/dafonts.css" />
   </head>
 
   <body class="chat">
-
     <div class="chat__sidebar">
       <div>
         <button id="admin" onClick="startGame()" hidden>start quiz</button>
@@ -20,8 +22,7 @@
     </div>
 
     <div class="chat__main">
-
-      <div id="daquestion" hidden=true>
+      <div id="daquestion" hidden="true">
         <h3 id="question">What is xxx?</h3>
         <div>
           <button onClick="setAnswer('a')" id="answer-a">a</button>
@@ -35,7 +36,13 @@
 
       <div class="chat__footer">
         <form id="message-form">
-          <input name="message" type="text" placeholder="Message" autofocus autocomplete="off"/>
+          <input
+            name="message"
+            type="text"
+            placeholder="Message"
+            autofocus
+            autocomplete="off"
+          />
           <button>Send</button>
         </form>
         <button id="send-location">Send Location</button>
