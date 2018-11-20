@@ -1,0 +1,195 @@
+/* DAZN Trim */
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: normal;
+  src: url('../assets/fonts/DAZNTrim-Regular.eot');
+  src: url('../assets/fonts/DAZNTrim-Regular.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-Regular.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-Regular.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: normal;
+  src: url('../assets/fonts/DAZNTrim-Italic.eot');
+  src: url('../assets/fonts/DAZNTrim-Italic.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-Italic.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-Italic.woff') format('woff');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: 500;
+  src: url('../assets/fonts/DAZNTrim-Medium.eot');
+  src: url('../assets/fonts/DAZNTrim-Medium.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-Medium.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-Medium.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: 500;
+  src: url('../assets/fonts/DAZNTrim-MediumItalic.eot');
+  src: url('../assets/fonts/DAZNTrim-MediumItalic.eot')
+      format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-MediumItalic.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-MediumItalic.woff') format('woff');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: 600;
+  src: url('../assets/fonts/DAZNTrim-SemiBold.eot');
+  src: url('../assets/fonts/DAZNTrim-SemiBold.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-SemiBold.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-SemiBold.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: 600;
+  src: url('../assets/fonts/DAZNTrim-SemiBoldItalic.eot');
+  src: url('../assets/fonts/DAZNTrim-SemiBoldItalic.eot')
+      format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-SemiBoldItalic.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-SemiBoldItalic.woff') format('woff');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: bold;
+  src: url('../assets/fonts/DAZNTrim-Bold.eot');
+  src: url('../assets/fonts/DAZNTrim-Bold.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-Bold.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-Bold.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DAZNTrim';
+  font-weight: bold;
+  src: url('../assets/fonts/DAZNTrim-BoldItalic.eot');
+  src: url('../assets/fonts/DAZNTrim-BoldItalic.eot')
+      format('embedded-opentype'),
+    url('../assets/fonts/DAZNTrim-BoldItalic.ttf') format('truetype'),
+    url('../assets/fonts/DAZNTrim-BoldItalic.woff') format('woff');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DAZNOscine';
+  font-weight: normal;
+  src: url('../assets/fonts/DAZNOscine-Regular.eot');
+  src: url('../assets/fonts/DAZNOscine-Regular.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNOscine-Regular.ttf') format('truetype'),
+    url('../assets/fonts/DAZNOscine-Regular.woff') format('woff');
+  font-style: normal;
+}
+
+/* DAZN Oscine */
+@font-face {
+  font-family: 'DAZNOscine';
+  font-weight: normal;
+  src: url('../assets/fonts/DAZNOscine-Italic.eot');
+  src: url('../assets/fonts/DAZNOscine-Italic.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNOscine-Italic.ttf') format('truetype'),
+    url('../assets/fonts/DAZNOscine-Italic.woff') format('woff');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DAZNOscine';
+  font-weight: bold;
+  src: url('../assets/fonts/DAZNOscine-Bold.eot');
+  src: url('../assets/fonts/DAZNOscine-Bold.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNOscine-Bold.ttf') format('truetype'),
+    url('../assets/fonts/DAZNOscine-Bold.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DAZNOscine';
+  font-weight: bold;
+  src: url('../assets/fonts/DAZNOscine-BoldItalic.eot');
+  src: url('../assets/fonts/DAZNOscine-BoldItalic.eot')
+      format('embedded-opentype'),
+    url('../assets/fonts/DAZNOscine-BoldItalic.ttf') format('truetype'),
+    url('../assets/fonts/DAZNOscine-BoldItalic.woff') format('woff');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DAZNOscine';
+  font-weight: 900;
+  src: url('../assets/fonts/DAZNOscine-XBold.eot');
+  src: url('../assets/fonts/DAZNOscine-XBold.eot') format('embedded-opentype'),
+    url('../assets/fonts/DAZNOscine-XBold.ttf') format('truetype'),
+    url('../assets/fonts/DAZNOscine-XBold.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DAZNOscine';
+  font-weight: 900;
+  src: url('../assets/fonts/DAZNOscine-XBoldItalic.eot');
+  src: url('../assets/fonts/DAZNOscine-XBoldItalic.eot')
+      format('embedded-opentype'),
+    url('../assets/fonts/DAZNOscine-XBoldItalic.ttf') format('truetype'),
+    url('../assets/fonts/DAZNOscine-XBoldItalic.woff') format('woff');
+  font-style: italic;
+}
+
+/* Axis */
+@font-face {
+  font-family: 'AxisStd';
+  font-weight: 300;
+  src: url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Regular.eot');
+  src: url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Regular.woff2')
+      format('woff2'),
+    url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Regular.woff')
+      format('woff'),
+    url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Regular.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'AxisStd';
+  font-weight: 400;
+  src: url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Medium.eot');
+  src: url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Medium.woff2')
+      format('woff2'),
+    url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Medium.woff')
+      format('woff'),
+    url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Medium.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'AxisStd';
+  font-weight: 600;
+  src: url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Bold.eot');
+  src: url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Bold.woff2')
+      format('woff2'),
+    url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Bold.woff')
+      format('woff'),
+    url('https://cdn.dazn.com/app/web/1.27.7/fonts/AxisStd-Bold.ttf')
+      format('truetype');
+}
+
+/* Navigation Icons */
+@font-face {
+  font-family: 'navigation-icons';
+  font-weight: normal;
+  src: url('../assets/fonts/navigation-icons.eot');
+  src: url('../assets/fonts/navigation-icons.eot') format('embedded-opentype'),
+    url('../assets/fonts/navigation-icons.ttf') format('truetype'),
+    url('../assets/fonts/navigation-icons.woff') format('woff'),
+    url('../assets/fonts/navigation-icons.svg') format('svg');
+  font-style: normal;
+}
