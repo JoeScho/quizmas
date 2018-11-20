@@ -83,6 +83,7 @@ button:hover {
   height: 50%;
   background-color: #0c161c;
   color: #ffffff;
+  border-bottom: 1px solid #ffffff;
 }
 
 .daquestion-responses {
