@@ -89,9 +89,12 @@ socket.on('updateUserList', function (users) {
     jQuery('#admin')[0].hidden = false;
   }
 
-  var ol = jQuery('<ol></ol>');
-  users.forEach(function (user) {
-    ol.append(jQuery('<li></li>').text(user.name));
+  var ol = jQuery('<ul></ul>');
+
+  users.sort(({ points: user1pts }, { points: user2pts }) => user2pts - user1pts);
+
+  users.forEach((user) => {
+    ol.append(jQuery('<li></li>').text(`${user.name}: ${user.points}`));
   });
 
   jQuery('#users').html(ol);
