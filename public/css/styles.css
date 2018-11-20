@@ -142,7 +142,6 @@ button:disabled {
   padding: 10px;
   background-color: #0c161c;
   color: #ffffff;
-  border-top: 1px solid #ffffff;
 }
 
 .message {
