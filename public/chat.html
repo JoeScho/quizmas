@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>WERDASHT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dacss.css">
+  </head>
+
+  <body class="chat">
+
+    <div class="chat__sidebar">
+      <div>
+        <button id="admin" onClick="startGame()" hidden>start quiz</button>
+      </div>
+      <h3>Leaderboard</h3>
+      <div id="users"></div>
+    </div>
+
+    <div class="chat__main">
+
+      <div id="daquestion" hidden=true>
+        <h3 id="question">What is xxx?</h3>
+        <div>
+          <button onClick="setAnswer('a')" id="answer-a">a</button>
+          <button onClick="setAnswer('b')" id="answer-b">b</button>
+          <button onClick="setAnswer('c')" id="answer-c">c</button>
+          <button onClick="setAnswer('d')" id="answer-d">d</button>
+        </div>
+      </div>
+
+      <ol id="messages" class="chat__messages"></ol>
+
+      <div class="chat__footer">
+        <form id="message-form">
+          <input name="message" type="text" placeholder="Message" autofocus autocomplete="off"/>
+          <button>Send</button>
+        </form>
+        <button id="send-location">Send Location</button>
+      </div>
+    </div>
+
+    <script id="message-template" type="text/template">
+      <li class="message">
+        <div class="message__title">
+          <h4>{{from}}</h4>
+          <span>{{createdAt}}</span>
+        </div>
+        <div class="message__body">
+          <p>{{text}}</p>
+        </div>
+      </li>
+    </script>
+
+    <script id="location-message-template" type="text/template">
+      <li class="message">
+        <div class="message__title">
+          <h4>{{from}}</h4>
+          <span>{{createdAt}}</span>
+        </div>
+        <div class="message__body">
+          <p>
+            <a href="{{url}}" target="_blank">My current location</a>
+          </p>
+        </div>
+      </li>
+    </script>
+
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/libs/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/libs/moment.js"></script>
+    <script type="text/javascript" src="/js/libs/mustache.js"></script>
+    <script type="text/javascript" src="/js/libs/deparam.js"></script>
+    <script type="text/javascript" src="/js/chat.js"></script>
+  </body>
+</html>
