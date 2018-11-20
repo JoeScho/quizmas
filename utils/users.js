@@ -8,17 +8,18 @@
 // removeUser(id)
 // getUser(id)
 // getUserList(room)
+// addPoint(id)
 
 class Users {
-  constructor () {
+  constructor() {
     this.users = [];
   }
-  addUser (id, name, room) {
-    var user = {id, name, room, admin: this.users.length === 0 };
+  addUser(id, name, room) {
+    var user = { id, name, room, admin: this.users.length === 0, points: 0 };
     this.users.push(user);
     return user;
   }
-  removeUser (id) {
+  removeUser(id) {
     var user = this.users.filter((user) => user.id === id)[0];
 
     if (user) {
@@ -26,12 +27,17 @@ class Users {
     }
     return user;
   }
-  getUser (id) {
+  getUser(id) {
     return this.users.filter((user) => user.id === id)[0];
   }
-  getUserList (room) {
+  getUserList(room) {
     return this.users.filter((user) => user.room === room);
+  }
+  addPoint(id) {
+    const user = this.users.filter((user) => user.id === id)[0];
+    user.points++;
+    return user;
   }
 }
 
-module.exports = {Users};
+module.exports = { Users };
