@@ -1,5 +1,17 @@
 var socket = io();
 
+function startGame() {
+  console.log('starting game');
+  socket.emit('startGame', {}, function(err) {
+    if (err) {
+      alert(err);
+      window.location.href = '/';
+    } else {
+      console.log('No error starting game');
+    }
+  });
+}
+
 function scrollToBottom() {
   //Selectors
   var messages = jQuery('#messages');
@@ -16,6 +28,9 @@ function scrollToBottom() {
   }
 };
 
+const getMyUser = (users, myUserId) =>
+  users.find(user => user.id === myUserId)
+
 socket.on('connect', function() {
   var params = jQuery.deparam(window.location.search);
 
@@ -29,14 +44,23 @@ socket.on('connect', function() {
   });
 });
 
+socket.on('gameStarted', function() {
+  alert('server initiated the game');
+});
+
 socket.on('disconnect', function() {
   console.log('Disconnected from server');
 });
 
 socket.on('updateUserList', function(users) {
-  var ol = jQuery('<ol></ol');
+  const me = getMyUser(users, socket.id);
+  if (me.admin) {
+    jQuery('#admin')[0].hidden = false;
+  }
+
+  var ol = jQuery('<ol></ol>');
   users.forEach(function(user) {
-    ol.append(jQuery('<li></li>').text(user));
+    ol.append(jQuery('<li></li>').text(user.name));
   });
 
   jQuery('#users').html(ol);
