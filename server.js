@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
       users.addPoint(socket.id);
     }
 
-    console.log(JSON.stringify(users.getUserList('DAQZ')))
+    io.to(QUIZ).emit('updateUserList', users.getUserList(QUIZ));
 
     callback();
   });
