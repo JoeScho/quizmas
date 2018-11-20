@@ -1,5 +1,6 @@
 var socket = io();
 let currentAnswer;
+let gameInProgress = false;
 
 const setAnswer = (answer, event) => {
   $('.response').removeClass('response-selected');
@@ -32,7 +33,7 @@ function populateQuestion({ question, answers }) {
   jQuery('#answer-c')[0].textContent = answers.c;
   jQuery('#answer-d')[0].textContent = answers.d;
 
-  jQuery('#daquestion')[0].hidden = false;
+  jQuery('#daquestion').removeClass('hidden');
 }
 
 function startGame() {
@@ -90,8 +91,9 @@ socket.on('disconnect', function () {
 
 socket.on('updateUserList', function (users) {
   const me = getMyUser(users, socket.id);
-  if (me.admin) {
+  if (me.admin && !gameInProgress) {
     $('.start-button-container').removeClass('hidden');
+    gameInProgress = true;
   }
 
   var ol = jQuery('<ul></ul>');
