@@ -39,11 +39,17 @@ h6 {
 .start-button-container {
   border-bottom: 1px solid #ffffff;
   display: flex;
+  flex-direction: column;
   background-color: #0c161c;
   height: 50%;
   width: 100%;
   justify-content: center;
   align-items: center;
+  height: 50vh;
+}
+
+.match-info{
+  background-color: #f7ff1a;
 }
 
 button {
@@ -159,10 +165,6 @@ button:hover {
     padding: 0 5px 0 5px;
     margin: 2px 5px 2px 5px;
     text-align: center;
-  }
-
-  .start-button-container {
-    height: 50vh;
   }
 
   .daquestion {
