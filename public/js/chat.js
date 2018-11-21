@@ -125,8 +125,12 @@ socket.on('updateUserList', function (users) {
 
   users.sort(({ points: user1pts }, { points: user2pts }) => user2pts - user1pts);
 
+  const winningAmount = users[0].points || -1;
+
   users.forEach(user => {
-    const name = jQuery('<span class="user-name"></span>').text(`${user.name}`);
+    const positionClass = winningAmount === user.points ? 'winning' : '';
+    const span = `<span class="user-name ${positionClass}"></span>`;
+    const name = jQuery(span).text(`${user.name}`);
     const points = jQuery('<span class="user-points"></span>').text(`${user.points}`);
     ol.append(jQuery('<li class="user-box"></li>').append(name, points));
   });
