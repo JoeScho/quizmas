@@ -50,7 +50,8 @@ function startGame() {
       window.location.href = '/';
     } else {
       console.log('No error starting game');
-      // $('.start-button-container').addClass('hidden');
+      $('.start-button').addClass('hidden');
+      $('.next-question').removeClass('hidden');
     }
   });
 }
