@@ -108,8 +108,14 @@ socket.on('client:nextQuestion', function (question, time) {
 });
 
 socket.on('quiz-over', function () {
-  alert('quiz-over')
+  quizOver();
 });
+
+function quizOver() {
+  console.log('Quiz Over');
+  $('.chat__main').addClass('hidden');
+  $('.chat__sidebar').addClass('quiz-over');
+}
 
 function scrollToBottom() {
   //Selectors
