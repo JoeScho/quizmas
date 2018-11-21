@@ -23,6 +23,7 @@ let questionTimestamp;
 
 app.use(express.static(publicPath));
 
+
 io.on('connection', (socket) => {
   console.log('New user connected');
 
@@ -33,6 +34,10 @@ io.on('connection', (socket) => {
       io.to(QUIZ).emit('timesup', { answer, list, questionId });
     }, TIME_LIMIT)
   };
+
+  const setQuestionCount = (index) => {
+    io.to(QUIZ).emit('questionCount', index+ 1);
+  }
 
   socket.on('answer', (params, callback) => {
     const diff = questionTimestamp - params.timestamp;
@@ -78,6 +83,7 @@ io.on('connection', (socket) => {
     questions = getQuestions();
     const { correct, ...list } = questions[questionIndex];
     io.to("DAQZ").emit('gameStarted', list, TIME_LIMIT);
+    setQuestionCount(questionIndex);
     questionTimestamp = Date.now();
     clearTimeout(timeout);
     startTimer(correct, list, questionIndex);
@@ -93,6 +99,7 @@ io.on('connection', (socket) => {
     }
     const { correct, ...list } = question;
     io.to("DAQZ").emit('client:nextQuestion', list, TIME_LIMIT);
+    setQuestionCount(questionIndex);
     questionTimestamp = Date.now();
     clearTimeout(timeout);
     startTimer(correct, list, questionIndex);

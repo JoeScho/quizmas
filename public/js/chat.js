@@ -35,8 +35,8 @@ socket.on('timesup', ({ answer, list, questionId }) => {
 function populateQuestion({ question, answers }, time) {
   document.querySelector('#logo').classList.toggle('image-spin');
   setTimeout(() => document.querySelector('#logo').classList.toggle('image-spin'), 1000);
-  questionCount++;
-  document.querySelector('.question-indicator').textContent = `${questionCount}/10`;
+  // questionCount++;
+  
   isNextQuestionActive = false;
   $('.next-question').addClass('disabled');
   const element = jQuery('#daquestion').children();
@@ -81,7 +81,7 @@ function populateQuestion({ question, answers }, time) {
 }
 
 function startGame() {
-  questionCount = 0;
+  //questionCount = 0;
   console.log('starting game');
   socket.emit('startGame', {}, function (err) {
     if (err) {
@@ -113,6 +113,10 @@ socket.on('client:nextQuestion', function (question, time) {
 
 socket.on('quiz-over', function () {
   quizOver();
+});
+
+socket.on('questionCount', function (questionCount) {
+  document.querySelector('.question-indicator').textContent = `${questionCount}/10`;
 });
 
 function quizOver() {
