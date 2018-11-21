@@ -1,0 +1,25 @@
+{
+  "name": "quizmas",
+  "version": "1.0.0",
+  "description": "Christmas quiz!",
+  "main": "quiz.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joescho/quizmas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joescho/quizmas/issues"
+  },
+  "homepage": "https://github.com/joescho/quizmas#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "lodash.shuffle": "^4.2.0",
+    "moment": "^2.22.2",
+    "socket.io": "^2.1.1"
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>WERDASHT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/dacss.css">
+  <link rel="stylesheet" href="/css/dafonts.css" />
+</head>
+
+<body class="chat">
+
+  <div class="chat__sidebar">
+    <img src="img/DAQZ-white.png" id="logo" />
+    <h3>Leaderboard</h3>
+    <div id="users"></div>
+  </div>
+
+  <div class="chat__main">
+      <div class="match-info">
+          <h3 class="hide-mobile">Manchester City vs Manchester United</h3>
+          <h3 class="hide-mobile">11th Nov 2018</h3>
+          <h3 class="question-indicator"></h3>
+        </div>
+   
+    <div class="start-button-container hidden">
+
+      <button class="start-button" id="admin" onClick="startGame()">start quiz</button>
+      <button class="start-button next-question hidden" id="admin" onClick="nextQuestion()">next question</button>
+    </div>
+
+    <div id="daquestion" class="daquestion hidden">
+      <div class="background"></div>
+
+      <div class="countdown" hidden>
+        <span class="countdown-time"></span>
+        <span class="countdown-seconds"></span>
+      </div>
+      
+      <h3 id="question"></h3>
+      <div class="daquestion-responses"></div>
+    </div>
+
+    <ol id="messages" class="chat__messages"></ol>
+
+    <div class="chat__footer">
+      <form id="message-form">
+        <input name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
+        <button>Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script id="message-template" type="text/template">
+      <li class="message">
+        <div class="message__title">
+          <h4>{{from}}</h4>
+          <span>{{createdAt}}</span>
+        </div>
+        <div class="message__body">
+          <p>{{text}}</p>
+        </div>
+      </li>
+    </script>
+
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/js/libs/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/js/libs/moment.js"></script>
+  <script type="text/javascript" src="/js/libs/mustache.js"></script>
+  <script type="text/javascript" src="/js/libs/deparam.js"></script>
+  <script type="text/javascript" src="/js/chat.js"></script>
+</body>
+
+</html>
