@@ -55,7 +55,7 @@ h6 {
   border-bottom: 1px solid #ffffff;
   display: flex;
   flex-direction: column;
-  background-color: #0c161c;
+  background-color: #FFE1EB;
   height: 50%;
   width: 100%;
   justify-content: center;
@@ -63,14 +63,10 @@ h6 {
   height: 50vh;
 }
 
-.match-info{
-  background-color: #f7ff1a;
-}
-
 button {
   border: none;
-  background-color: #f7ff1a;
-  color: #0c161c;
+  background-color: #960000;
+  color: #FFE1EB;
   cursor: pointer;
   font-family: font-family: 'DAZNOscine', 'Oscine', 'Helvetica Neue', Helvetica, Arial,
   sans-serif;
@@ -83,8 +79,8 @@ button {
 
 button:hover {
   border: none;
-  background-color: #ced100;
-  color: #0c161c;
+  background-color: #B41D01;
+  color: #FFE1EB;
 }
 
 .start-button {
@@ -96,7 +92,7 @@ button:hover {
 }
 
 .start-button:hover {
-  background-color: #ced100;
+  background-color: #B41D01;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -106,21 +102,9 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   height: 50%;
-  background-color: #0c161c;
+  background-color: #FFE1EB;
   color: #ffffff;
   border-bottom: 1px solid #ffffff;
-}
-
-.background {
-  position: absolute;
-  height: 31%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-image: url('../img/gameBG.jpg');
-  opacity: 0.2;
-  filter: alpha(opacity=20);
-  width: 100%;
 }
 
 #daquestion .countdown {
@@ -132,7 +116,7 @@ button:hover {
 #daquestion .countdown-time {
   background-color: #f7ff1a;
   border: 5px solid #f7ff1a;
-  color: #0c161c;
+  color: #FFE1EB;
   padding: 5px;
 }
 
@@ -147,8 +131,8 @@ button:hover {
 }
 
 .daquestion-responses button {
-  background-color: #0c161c;
-  border: 5px solid #0c161c;
+  background-color: #960000;
+  border: 5px solid #960000;
   color: #ffffff;
   margin: 10px;
 }
@@ -160,34 +144,34 @@ button:hover {
 .daquestion-responses .correct {
   background-color: #f7ff1a;
   border: 5px solid #f7ff1a;
-  color: #0c161c;
+  color: #FFE1EB;
   transform: scale(1.2);
 }
 
 .daquestion-responses .wrong {
-  background-color: #0c161c;
-  border: 5px solid #0c161c;
-  color: #3d4549;
+  background-color: #FFE1EB;
+  border: 5px solid #FFE1EB;
+  color: #FFE1EB;
 }
 
 .daquestion-responses .response-selected.wrong {
-  border: 5px solid #0c161c;
+  border: 5px solid #FFE1EB;
 }
 
 .wrong:hover {
-  background-color: #252d32;
+  background-color: #F9C0D0;
   border: 5px solid #2c3135;
-  color: #3d4549;
+  color: #960000;
 }
 
 .next-question.disabled {
-  background-color: #252d32;
-  color: #3d4549;
+  background-color: #F9C0D0;
+  color: #FFFAFA;
 }
 
 .next-question.disabled:hover {
-  background-color: #252d32;
-  color: #3d4549;
+  background-color: #F9C0D0;
+  color: #FFFAFA;
 }
 
 @media (max-width: 600px) {
