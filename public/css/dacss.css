@@ -112,6 +112,23 @@ button:hover {
   width: 100%;
 }
 
+#daquestion .countdown {
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+}
+
+#daquestion .countdown-time {
+  background-color: #f7ff1a;
+  border: 5px solid #f7ff1a;
+  color: #0c161c;
+  padding: 5px;
+}
+
+#daquestion .countdown-seconds {
+  margin-left: 10px;
+}
+
 .daquestion-responses {
   display: flex;
   justify-content: center;
