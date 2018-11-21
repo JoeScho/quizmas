@@ -194,6 +194,9 @@ button:hover {
   * {
     font-size: 1rem;
   }
+  .hide-mobile{
+    display:none !important;
+  }
 
   .daquestion-responses button.response {
       padding: 0;
