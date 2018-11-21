@@ -17,12 +17,11 @@ socket.on('timesup', ({ answer, list, questionId }) => {
     }
   });
 
-  jQuery('#answer-a')[0].classList.add('wrong');
-  jQuery('#answer-b')[0].classList.add('wrong');
-  jQuery('#answer-c')[0].classList.add('wrong');
-  jQuery('#answer-d')[0].classList.add('wrong');
-  jQuery(`#answer-${answer}`)[0].classList.remove('wrong');
-  jQuery(`#answer-${answer}`)[0].classList.add('correct');
+  Object.keys(list.answers).forEach(response => {
+    jQuery(`#answer-${response}`).addClass(
+      answer !== response ? 'wrong' : 'correct'
+    );
+  });
 });
 
 function populateQuestion({ question, answers }) {
