@@ -243,3 +243,13 @@ button:hover {
     margin: 10px;
   }
 }
+
+.image-spin {
+  -webkit-animation:spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-animation:spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation:spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-iteration-count: 1;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
