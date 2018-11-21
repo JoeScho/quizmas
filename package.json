@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/getndazn/WERDASHT.git"
+    "url": "git+https://github.com/joescho/quizmas.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/getndazn/WERDASHT/issues"
+    "url": "https://github.com/joescho/quizmas/issues"
   },
-  "homepage": "https://github.com/getndazn/WERDASHT#readme",
+  "homepage": "https://github.com/joescho/quizmas#readme",
   "dependencies": {
     "express": "^4.16.4",
     "lodash.shuffle": "^4.2.0",
