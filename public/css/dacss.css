@@ -19,6 +19,10 @@ h6 {
   content: " 🏆";
 }
 
+.nerd::before {
+  content: " 🤓";
+}
+
 .chat__sidebar {
   display: flex;
   flex-direction: column;
