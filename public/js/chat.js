@@ -31,6 +31,9 @@ socket.on('timesup', ({ answer, list, questionId }) => {
 });
 
 function populateQuestion({ question, answers }, time) {
+  document.querySelector('#logo').classList.toggle('image-spin');
+  setTimeout(() => document.querySelector('#logo').classList.toggle('image-spin'), 1000);
+
   isNextQuestionActive = false;
   $('.next-question').addClass('disabled');
   const element = jQuery('#daquestion').children();
@@ -131,6 +134,8 @@ socket.on('connect', function () {
   const params = jQuery.deparam(window.location.search);
 
   socket.emit('join', params, function (err) {
+    document.querySelector('#logo').classList.toggle('image-spin');
+    setTimeout(() => document.querySelector('#logo').classList.toggle('image-spin'), 1000);
     if (err) {
       alert(err);
       window.location.href = '/';
