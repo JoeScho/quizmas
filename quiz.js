@@ -83,12 +83,12 @@ const questions = [
   {
     question: "How many minutes including injury time were played?",
     answers: {
-      a: '45',
-      b: '90',
-      c: '92',
-      d: '94'
+      a: '90',
+      b: '92',
+      c: '94',
+      d: '96'
     },
-    correct: 'd'
+    correct: 'c'
   },
   {
     question: "What time was kick-off?",
