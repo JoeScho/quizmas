@@ -33,9 +33,9 @@ class Users {
   getUserList(room) {
     return this.users.filter((user) => user.room === room);
   }
-  addPoint(id) {
+  addPoint(id, limit, taken) {
     const user = this.users.filter((user) => user.id === id)[0];
-    user.points++;
+    user.points += limit + taken;
     return user;
   }
 }

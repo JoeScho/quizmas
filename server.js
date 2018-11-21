@@ -15,9 +15,11 @@ const server = http.createServer(app);
 const io = socketIO(server);
 const users = new Users();
 const QUIZ = 'DAQZ';
+const TIME_LIMIT = 5000
 
 let questionIndex;
 let questions
+let questionTimestamp;
 
 app.use(express.static(publicPath));
 
@@ -29,14 +31,15 @@ io.on('connection', (socket) => {
   const startTimer = (answer, list, questionId) => {
     timeout = setTimeout(() => {
       io.to(QUIZ).emit('timesup', { answer, list, questionId });
-    }, 5000)
+    }, TIME_LIMIT)
   };
 
   socket.on('answer', (params, callback) => {
-    console.log(`got answer ${params.answer} for ${JSON.stringify(users.getUser(socket.id))}`);
+    const diff = questionTimestamp - params.timestamp;
+    // console.log(`got answer ${params.answer} for ${JSON.stringify(users.getUser(socket.id))}`);
     const { correct } = questions[params.questionId];
     if(params.answer === correct) {
-      users.addPoint(socket.id);
+      users.addPoint(socket.id, TIME_LIMIT,diff );
       console.log(`correct answer for ${JSON.stringify(users.getUser(socket.id))}`);
     }
 
@@ -75,6 +78,7 @@ io.on('connection', (socket) => {
     questions = getQuestions();
     const { correct, ...list } = questions[questionIndex];
     io.to("DAQZ").emit('gameStarted', list);
+    questionTimestamp = Date.now();
     clearTimeout(timeout);
     startTimer(correct, list, questionIndex);
     callback();
@@ -89,6 +93,7 @@ io.on('connection', (socket) => {
     }
     const { correct, ...list } = question;
     io.to("DAQZ").emit('client:nextQuestion', list);
+    questionTimestamp = Date.now();
     clearTimeout(timeout);
     startTimer(correct, list, questionIndex);
     callback();
