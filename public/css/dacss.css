@@ -90,9 +90,22 @@ button:hover {
   border-bottom: 1px solid #ffffff;
 }
 
+.background {
+  position: absolute;
+  height: 31%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../img/gameBG.jpg');
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+  width: 100%;
+}
+
 .daquestion-responses {
   display: flex;
   justify-content: center;
+  z-index: 1;
 }
 
 .daquestion-responses button {
