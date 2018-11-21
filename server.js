@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const { questions } = require('./quiz.js');
+const { getQuestions } = require('./quiz.js');
 
 const { generateMessage, generateLocationMessage } = require('./utils/message');
 const { isRealString } = require('./utils/validation');
@@ -15,6 +15,9 @@ const server = http.createServer(app);
 const io = socketIO(server);
 const users = new Users();
 const QUIZ = 'DAQZ';
+
+let questionIndex;
+let questions
 
 app.use(express.static(publicPath));
 
@@ -68,11 +71,26 @@ io.on('connection', (socket) => {
 
   // admin started game
   socket.on('startGame', (message, callback) => {
-    const questionId = Math.floor(Math.random() * Math.floor(questions.length));
-    const { correct, ...list } = questions[questionId];
+    questionIndex = 0;
+    questions = getQuestions();
+    const { correct, ...list } = questions[questionIndex];
     io.to("DAQZ").emit('gameStarted', list);
     clearTimeout(timeout);
-    startTimer(correct, list, questionId);
+    startTimer(correct, list, questionIndex);
+    callback();
+  });
+
+  socket.on('server:nextQuestion', (message, callback) => {
+    questionIndex++;
+    const question = questions[questionIndex];
+    if(!question){
+      io.to("DAQZ").emit('quiz-over');
+      return callback();
+    }
+    const { correct, ...list } = question;
+    io.to("DAQZ").emit('client:nextQuestion', list);
+    clearTimeout(timeout);
+    startTimer(correct, list, questionIndex);
     callback();
   });
 

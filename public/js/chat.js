@@ -55,6 +55,24 @@ function startGame() {
   });
 }
 
+function nextQuestion() {
+  console.log('next question');
+  socket.emit('server:nextQuestion', {}, function (err) {
+    if (err) {
+      alert(err);
+    } else {
+    }
+  });
+}
+
+socket.on('client:nextQuestion', function (question) {
+  populateQuestion(question);
+});
+
+socket.on('quiz-over', function () {
+  alert('quiz-over')
+});
+
 function scrollToBottom() {
   //Selectors
   const messages = jQuery('#messages');
@@ -90,6 +108,7 @@ socket.on('connect', function () {
 socket.on('gameStarted', function (question) {
   populateQuestion(question);
 });
+
 
 socket.on('disconnect', function () {
   console.log('Disconnected from server');
