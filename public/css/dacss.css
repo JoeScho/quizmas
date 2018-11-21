@@ -15,6 +15,10 @@ h6 {
     sans-serif;
 }
 
+.winning::after {
+  content: " 🏆";
+}
+
 .chat__sidebar {
   display: flex;
   flex-direction: column;
@@ -49,7 +53,7 @@ button {
   cursor: pointer;
   font-family: font-family: 'DAZNOscine', 'Oscine', 'Helvetica Neue', Helvetica, Arial,
   sans-serif;
-  
+
   font-weight: bold;
   padding: 10px;
   text-transform: uppercase;
@@ -188,7 +192,7 @@ button:hover {
   .daquestion-responses {
     flex-direction: column;
   }
-  
+
   .daquestion-responses button {
     margin: 10px;
   }
