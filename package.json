@@ -1,7 +1,7 @@
 {
-  "name": "werdasht",
+  "name": "quizmas",
   "version": "1.0.0",
-  "description": "Hackathon",
+  "description": "Christmas quiz!",
   "main": "quiz.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
