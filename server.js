@@ -15,7 +15,7 @@ const server = http.createServer(app);
 const io = socketIO(server);
 const users = new Users();
 const QUIZ = 'DAQZ';
-const TIME_LIMIT = 5000
+const TIME_LIMIT = 15000
 
 let questionIndex;
 let questions
