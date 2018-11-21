@@ -140,7 +140,8 @@ socket.on('updateUserList', function (users) {
 
   users.forEach(user => {
     const positionClass = winningAmount === user.points ? 'winning' : '';
-    const span = `<span class="user-name ${positionClass}"></span>`;
+    const nerdClass = user.admin ? 'nerd' : '';
+    const span = `<span class="user-name ${positionClass} ${nerdClass}"></span>`;
     const name = jQuery(span).text(`${user.name}`);
     const points = jQuery('<span class="user-points"></span>').text(`${user.points}`);
     ol.append(jQuery('<li class="user-box"></li>').append(name, points));
