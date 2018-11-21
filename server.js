@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
     questionIndex = 0;
     questions = getQuestions();
     const { correct, ...list } = questions[questionIndex];
-    io.to("DAQZ").emit('gameStarted', list);
+    io.to("DAQZ").emit('gameStarted', list, TIME_LIMIT);
     questionTimestamp = Date.now();
     clearTimeout(timeout);
     startTimer(correct, list, questionIndex);
@@ -92,7 +92,7 @@ io.on('connection', (socket) => {
       return callback();
     }
     const { correct, ...list } = question;
-    io.to("DAQZ").emit('client:nextQuestion', list);
+    io.to("DAQZ").emit('client:nextQuestion', list, TIME_LIMIT);
     questionTimestamp = Date.now();
     clearTimeout(timeout);
     startTimer(correct, list, questionIndex);
