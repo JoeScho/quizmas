@@ -26,7 +26,7 @@ socket.on('timesup', ({ answer, list, questionId }) => {
 
 function populateQuestion({ question, answers }) {
   const element = jQuery('#daquestion').children();
-  element.first().text(question);
+  document.querySelector('#question').textContent = question;
   element.last().empty();
 
   Object.keys(answers).forEach(id => {
