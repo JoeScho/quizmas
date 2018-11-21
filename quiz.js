@@ -103,5 +103,5 @@ const questions = [
 ];
 
 module.exports = {
-  questions: shuffle(questions)
+  getQuestions: () => shuffle(questions)
 }
