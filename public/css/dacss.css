@@ -47,10 +47,6 @@ h6 {
   max-width: 1000px;
 }
 
-.chat__sidebar.quiz-over #users .winning {
-  transform: scale(2);
-}
-
 .hidden {
   display: none !important;
 }
