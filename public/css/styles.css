@@ -73,6 +73,7 @@ button:disabled {
 
 .chat {
   display: flex;
+  overflow-x: hidden;
 }
 
 .chat__sidebar {

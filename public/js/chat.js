@@ -34,7 +34,7 @@ function populateQuestion({ question, answers }) {
   isNextQuestionActive = false;
   $('.next-question').addClass('disabled');
   const element = jQuery('#daquestion').children();
-  element.first().text(question);
+  document.querySelector('#question').textContent = question;
   element.last().empty();
 
   Object.keys(answers).forEach(id => {
