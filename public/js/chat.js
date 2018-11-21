@@ -1,4 +1,4 @@
-var socket = io();
+const socket = io();
 let currentAnswer;
 let gameInProgress = false;
 
@@ -8,8 +8,8 @@ const setAnswer = (answer, event) => {
   return currentAnswer = answer;
 }
 
-socket.on('timeup', ({ answer }) => {
-  socket.emit('answer', { answer: currentAnswer }, function (err) {
+socket.on('timesup', ({ answer, list, questionId }) => {
+  socket.emit('answer', { answer: currentAnswer, questionId }, function (err) {
     currentAnswer = null;
 
     if (err) {
@@ -26,12 +26,19 @@ socket.on('timeup', ({ answer }) => {
 });
 
 function populateQuestion({ question, answers }) {
-  jQuery('#question')[0].textContent = question;
+  const element = jQuery('#daquestion').children();
+  element.first().text(question);
+  element.last().empty();
 
-  jQuery('#answer-a')[0].textContent = answers.a;
-  jQuery('#answer-b')[0].textContent = answers.b;
-  jQuery('#answer-c')[0].textContent = answers.c;
-  jQuery('#answer-d')[0].textContent = answers.d;
+  Object.keys(answers).forEach(id => {
+    const button = jQuery('<button></button>')
+      .attr('id', `answer-${id}`)
+      .addClass('response')
+      .click(event => setAnswer(id, event))
+      .text(answers[id]);
+
+    element.last().append(button)
+  });
 
   jQuery('#daquestion').removeClass('hidden');
 }
@@ -44,21 +51,21 @@ function startGame() {
       window.location.href = '/';
     } else {
       console.log('No error starting game');
-      $('.start-button-container').addClass('hidden');
+      // $('.start-button-container').addClass('hidden');
     }
   });
 }
 
 function scrollToBottom() {
   //Selectors
-  var messages = jQuery('#messages');
-  var newMessage = messages.children('li:last-child');
+  const messages = jQuery('#messages');
+  const newMessage = messages.children('li:last-child');
   //Heights
-  var clientHeight = messages.prop('clientHeight');
-  var scrollTop = messages.prop('scrollTop');
-  var scrollHeight = messages.prop('scrollHeight');
-  var newMessageHeight = newMessage.innerHeight();
-  var lastMessageHeight = newMessage.prev().innerHeight();
+  const clientHeight = messages.prop('clientHeight');
+  const scrollTop = messages.prop('scrollTop');
+  const scrollHeight = messages.prop('scrollHeight');
+  const newMessageHeight = newMessage.innerHeight();
+  const lastMessageHeight = newMessage.prev().innerHeight();
 
   if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
     messages.scrollTop(scrollHeight);
@@ -69,7 +76,7 @@ const getMyUser = (users, myUserId) =>
   users.find(user => user.id === myUserId)
 
 socket.on('connect', function () {
-  var params = jQuery.deparam(window.location.search);
+  const params = jQuery.deparam(window.location.search);
 
   socket.emit('join', params, function (err) {
     if (err) {
@@ -96,21 +103,23 @@ socket.on('updateUserList', function (users) {
     gameInProgress = true;
   }
 
-  var ol = jQuery('<ul></ul>');
+  const ol = jQuery('<ul></ul>');
 
   users.sort(({ points: user1pts }, { points: user2pts }) => user2pts - user1pts);
 
-  users.forEach((user) => {
-    ol.append(jQuery('<li></li>').text(`${user.name}: ${user.points}`));
+  users.forEach(user => {
+    const name = jQuery('<span class="user-name"></span>').text(`${user.name}`);
+    const points = jQuery('<span class="user-points"></span>').text(`${user.points}`);
+    ol.append(jQuery('<li class="user-box"></li>').append(name, points));
   });
 
   jQuery('#users').html(ol);
 });
 
 socket.on('newMessage', function (message) {
-  var formattedTime = moment(message.createdAt).format('h:mm a');
-  var template = jQuery('#message-template').html();
-  var html = Mustache.render(template, {
+  const formattedTime = moment(message.createdAt).format('h:mm a');
+  const template = jQuery('#message-template').html();
+  const html = Mustache.render(template, {
     text: message.text,
     from: message.from,
     createdAt: formattedTime
@@ -121,9 +130,9 @@ socket.on('newMessage', function (message) {
 });
 
 socket.on('newLocationMessage', function (message) {
-  var formattedTime = moment(message.createdAt).format('h:mm a');
-  var template = jQuery('#location-message-template').html();
-  var html = Mustache.render(template, {
+  const formattedTime = moment(message.createdAt).format('h:mm a');
+  const template = jQuery('#location-message-template').html();
+  const html = Mustache.render(template, {
     from: message.from,
     url: message.url,
     createdAt: formattedTime
@@ -136,31 +145,11 @@ socket.on('newLocationMessage', function (message) {
 jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();
 
-  var messageTextbox = jQuery('[name=message]');
+  const messageTextbox = jQuery('[name=message]');
 
   socket.emit('createMessage', {
     text: messageTextbox.val()
   }, function () {
     messageTextbox.val('');
-  });
-});
-
-var locationButton = jQuery('#send-location');
-locationButton.on('click', function () {
-  if (!navigator.geolocation) {
-    return alert('Geolocation not supported by your browser');
-  }
-
-  locationButton.attr('disabled', 'disabled').text('Sending location...');
-
-  navigator.geolocation.getCurrentPosition(function (position) {
-    locationButton.removeAttr('disabled').text('Send location');
-    socket.emit('createLocationMessage', {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude
-    });
-  }, function () {
-    locationButton.removeAttr('disabled').text('Send location');
-    alert('Unable to fetch location.');
   });
 });
