@@ -129,6 +129,16 @@ button:hover {
   color: #3d4549;
 }
 
+.next-question.disabled {
+  background-color: #252d32;
+  color: #3d4549;
+}
+
+.next-question.disabled:hover {
+  background-color: #252d32;
+  color: #3d4549;
+}
+
 @media (max-width: 600px) {
   * {
     font-size: 1rem;

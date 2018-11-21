@@ -2,6 +2,8 @@ const socket = io();
 let currentAnswer;
 let timestamp;
 let gameInProgress = false;
+let isNextQuestionActive = false;
+
 
 const setAnswer = (answer, event) => {
   $('.response').removeClass('response-selected');
@@ -13,6 +15,8 @@ const setAnswer = (answer, event) => {
 socket.on('timesup', ({ answer, list, questionId }) => {
   socket.emit('answer', { answer: currentAnswer, questionId, timestamp }, function (err) {
     currentAnswer = null;
+    isNextQuestionActive = true;
+    $('.next-question').removeClass('disabled');
 
     if (err) {
       alert(err);
@@ -27,6 +31,8 @@ socket.on('timesup', ({ answer, list, questionId }) => {
 });
 
 function populateQuestion({ question, answers }) {
+  isNextQuestionActive = false;
+  $('.next-question').addClass('disabled');
   const element = jQuery('#daquestion').children();
   element.first().text(question);
   element.last().empty();
@@ -59,7 +65,9 @@ function startGame() {
 }
 
 function nextQuestion() {
-  console.log('next question');
+  if (!isNextQuestionActive) {
+    return;
+  }
   socket.emit('server:nextQuestion', {}, function (err) {
     if (err) {
       alert(err);
