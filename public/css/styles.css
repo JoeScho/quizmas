@@ -93,12 +93,28 @@ button:disabled {
 }
 
 .chat__sidebar li {
+  display: flex;
   background: #0c161c;
   border: 1px solid #ffffff;
   color: #ffffff;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
+  align-items: center;
+}
+
+.chat__sidebar li .user-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+.chat__sidebar li .user-points {
+  border: none;
+  background-color: #f7ff1a;
+  color: #0c161c;
+  padding: 5px;
 }
 
 .chat__main {

@@ -25,12 +25,7 @@
 
     <div id="daquestion" class="daquestion hidden">
       <h3 id="question"></h3>
-      <div class="daquestion-responses">
-        <button class="response" onClick="setAnswer('a', event)" id="answer-a"></button>
-        <button class="response" onClick="setAnswer('b', event)" id="answer-b"></button>
-        <button class="response" onClick="setAnswer('c', event)" id="answer-c"></button>
-        <button class="response" onClick="setAnswer('d', event)" id="answer-d"></button>
-      </div>
+      <div class="daquestion-responses"></div>
     </div>
 
     <ol id="messages" class="chat__messages"></ol>
@@ -40,7 +35,6 @@
         <input name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
         <button>Send</button>
       </form>
-      <button id="send-location">Send Location</button>
     </div>
   </div>
 
@@ -52,20 +46,6 @@
         </div>
         <div class="message__body">
           <p>{{text}}</p>
-        </div>
-      </li>
-    </script>
-
-  <script id="location-message-template" type="text/template">
-      <li class="message">
-        <div class="message__title">
-          <h4>{{from}}</h4>
-          <span>{{createdAt}}</span>
-        </div>
-        <div class="message__body">
-          <p>
-            <a href="{{url}}" target="_blank">My current location</a>
-          </p>
         </div>
       </li>
     </script>
