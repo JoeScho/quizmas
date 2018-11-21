@@ -136,8 +136,8 @@ button:hover {
 }
 
 .daquestion-responses button {
-  background-color: #252d32;
-  border: 5px solid #252d32;
+  background-color: #0c161c;
+  border: 5px solid #0c161c;
   color: #ffffff;
   margin: 10px;
 }
@@ -154,13 +154,13 @@ button:hover {
 }
 
 .daquestion-responses .wrong {
-  background-color: #252d32;
-  border: 5px solid #2c3135;
+  background-color: #0c161c;
+  border: 5px solid #0c161c;
   color: #3d4549;
 }
 
 .daquestion-responses .response-selected.wrong {
-  border: 5px solid #2c3135;
+  border: 5px solid #0c161c;
 }
 
 .wrong:hover {
