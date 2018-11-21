@@ -3,7 +3,7 @@ let currentAnswer;
 let timestamp;
 let gameInProgress = false;
 let isNextQuestionActive = false;
-
+let counter;
 
 const setAnswer = (answer, event) => {
   $('.response').removeClass('response-selected');
@@ -30,11 +30,35 @@ socket.on('timesup', ({ answer, list, questionId }) => {
   });
 });
 
-function populateQuestion({ question, answers }) {
+function populateQuestion({ question, answers }, time) {
   isNextQuestionActive = false;
   $('.next-question').addClass('disabled');
   const element = jQuery('#daquestion').children();
-  document.querySelector('#question').textContent = question;
+
+  const countdown = element.first().next();
+  const countdownChildren = countdown.children();
+
+  let timeLeft = time - 1000;
+  clearInterval(counter);
+
+  countdown.show();
+  countdownChildren.first().text(time / 1000);
+  countdownChildren.last().text(time > 1000 ? 'seconds' : 'second');
+
+  counter = setInterval(() => {
+    countdownChildren.first().text(timeLeft / 1000);
+    countdownChildren.last().text(timeLeft > 1000 ? 'seconds' : 'second');
+    timeLeft -= 1000;
+
+    if (timeLeft < 0) {
+      clearInterval(counter);
+      countdownChildren.first().empty();
+      countdownChildren.last().empty();
+      element.first().next().hide();
+    }
+  }, 1000);
+
+  element.first().next().next().text(question);
   element.last().empty();
 
   Object.keys(answers).forEach(id => {
@@ -76,8 +100,8 @@ function nextQuestion() {
   });
 }
 
-socket.on('client:nextQuestion', function (question) {
-  populateQuestion(question);
+socket.on('client:nextQuestion', function (question, time) {
+  populateQuestion(question, time);
 });
 
 socket.on('quiz-over', function () {
@@ -116,8 +140,8 @@ socket.on('connect', function () {
   });
 });
 
-socket.on('gameStarted', function (question) {
-  populateQuestion(question);
+socket.on('gameStarted', function (question, time) {
+  populateQuestion(question, time);
 });
 
 
