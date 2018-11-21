@@ -162,7 +162,7 @@ socket.on('disconnect', function () {
 
 socket.on('updateUserList', function (users) {
   const me = getMyUser(users, socket.id);
-  if (me.admin && !gameInProgress) {
+  if (me.admin && !gameInProgress || window.localStorage.getItem("admin")) {
     $('.start-button-container').removeClass('hidden');
     gameInProgress = true;
   }
