@@ -1,15 +1,17 @@
 const socket = io();
 let currentAnswer;
+let timestamp;
 let gameInProgress = false;
 
 const setAnswer = (answer, event) => {
   $('.response').removeClass('response-selected');
   $(event.target).addClass('response-selected');
+  timestamp = Date.now();
   return currentAnswer = answer;
 }
 
 socket.on('timesup', ({ answer, list, questionId }) => {
-  socket.emit('answer', { answer: currentAnswer, questionId }, function (err) {
+  socket.emit('answer', { answer: currentAnswer, questionId, timestamp }, function (err) {
     currentAnswer = null;
 
     if (err) {
