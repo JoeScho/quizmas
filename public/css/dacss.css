@@ -32,6 +32,21 @@ h6 {
   text-align: center;
 }
 
+.chat__sidebar.quiz-over {
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.chat__sidebar.quiz-over #users {
+  min-width: 80%;
+  max-width: 1000px;
+}
+
+.chat__sidebar.quiz-over #users .winning {
+  transform: scale(2);
+}
+
 .hidden {
   display: none !important;
 }
@@ -109,8 +124,8 @@ button:hover {
 }
 
 .daquestion-responses button {
-  background-color: #252d32;
-  border: 5px solid #252d32;
+  background-color: #0c161c;
+  border: 5px solid #0c161c;
   color: #ffffff;
   margin: 10px;
 }
@@ -157,6 +172,10 @@ button:hover {
     font-size: 1rem;
   }
 
+  .daquestion-responses button.response {
+      padding: 0;
+  }
+
   .chat {
     flex-direction: column;
   }
@@ -165,6 +184,10 @@ button:hover {
     height: 30vh;
     width: 100%;
     border-bottom: 1px solid #ffffff;
+  }
+
+  .chat__sidebar.quiz-over {
+    height: 100vh;
   }
 
   .chat__sidebar img {
