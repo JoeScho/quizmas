@@ -9,6 +9,7 @@
 // getUser(id)
 // getUserList(room)
 // addPoint(id)
+// resetScores()
 
 class Users {
   constructor() {
@@ -37,6 +38,9 @@ class Users {
     const user = this.users.filter((user) => user.id === id)[0];
     user.points += limit + taken;
     return user;
+  }
+  resetScores() {
+    this.users.forEach(u => u.points = 0);
   }
 }
 

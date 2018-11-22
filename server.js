@@ -80,6 +80,8 @@ io.on('connection', (socket) => {
   // admin started game
   socket.on('startGame', (message, callback) => {
     questionIndex = 0;
+    users.resetScores();
+    io.to(QUIZ).emit('updateUserList', users.getUserList(QUIZ));
     questions = getQuestions();
     const { correct, ...list } = questions[questionIndex];
     io.to("quizmas").emit('gameStarted', list, TIME_LIMIT);

@@ -97,7 +97,6 @@ function startGame() {
 }
 
 function restartGame() {
-  //questionCount = 0;
   console.log('restarting game');
   socket.emit('startGame', {}, function (err) {
     if (err) {
