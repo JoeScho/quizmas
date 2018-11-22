@@ -5,6 +5,7 @@ let gameInProgress = false;
 let isNextQuestionActive = false;
 let counter;
 let questionCount;
+let allUsers = [];
 
 
 const setAnswer = (answer, event) => {
@@ -36,7 +37,7 @@ function populateQuestion({ question, answers }, time) {
   document.querySelector('#logo').classList.toggle('image-spin');
   setTimeout(() => document.querySelector('#logo').classList.toggle('image-spin'), 1000);
   // questionCount++;
-  
+
   isNextQuestionActive = false;
   $('.next-question').addClass('disabled');
   const element = jQuery('#daquestion').children();
@@ -95,6 +96,25 @@ function startGame() {
   });
 }
 
+function restartGame() {
+  //questionCount = 0;
+  console.log('restarting game');
+  socket.emit('startGame', {}, function (err) {
+    if (err) {
+      alert(err);
+      window.location.href = '/';
+    } else {
+      console.log('No error starting game');
+      gameInProgress = false;
+      $('.restart-button-container').addClass('hidden');
+      $('.next-question').removeClass('hidden');
+      $('.chat__main').removeClass('hidden');
+      $('.chat__sidebar').removeClass('quiz-over');
+      $('.chat__sidebar img').removeClass('leaderboard-img');
+    }
+  });
+}
+
 function nextQuestion() {
   if (!isNextQuestionActive) {
     return;
@@ -115,14 +135,17 @@ socket.on('quiz-over', function () {
   quizOver();
 });
 
-socket.on('questionCount', function (questionCount) {
-  document.querySelector('.question-indicator').textContent = `${questionCount}/10`;
-});
-
 function quizOver() {
   console.log('Quiz Over');
+  gameInProgress = false;
   $('.chat__main').addClass('hidden');
   $('.chat__sidebar').addClass('quiz-over');
+  $('.chat__sidebar img').addClass('leaderboard-img');
+
+  const me = getMyUser(allUsers, socket.id);
+  if (me.admin && !gameInProgress || window.localStorage.getItem("admin")) {
+    $('.restart-button-container').removeClass('hidden');
+  }
 }
 
 function scrollToBottom() {
@@ -169,6 +192,8 @@ socket.on('disconnect', function () {
 });
 
 socket.on('updateUserList', function (users) {
+  allUsers = users;
+
   const me = getMyUser(users, socket.id);
   if (me.admin && !gameInProgress || window.localStorage.getItem("admin")) {
     $('.start-button-container').removeClass('hidden');
@@ -230,3 +255,5 @@ jQuery('#message-form').on('submit', function (e) {
     messageTextbox.val('');
   });
 });
+
+

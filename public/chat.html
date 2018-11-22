@@ -13,14 +13,16 @@
 <body class="chat">
 
   <div class="chat__sidebar">
-    <img src="img/pudding.png" id="logo" />
+    <img src="img/pudding.png" id="logo" class="chat__sidebar-img" />
     <h3>Leaderboard</h3>
     <div id="users"></div>
+    <div class="restart-button-container hidden">
+      <button class="restart-button" id="admin" onClick="restartGame()">restart</button>
+    </div>
   </div>
 
   <div class="chat__main">
     <div class="start-button-container hidden">
-
       <button class="start-button" id="admin" onClick="startGame()">start quiz</button>
       <button class="start-button next-question hidden" id="admin" onClick="nextQuestion()">next question</button>
     </div>

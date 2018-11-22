@@ -15,7 +15,7 @@ const server = http.createServer(app);
 const io = socketIO(server);
 const users = new Users();
 const QUIZ = 'quizmas';
-const TIME_LIMIT = 15000
+const TIME_LIMIT = 10000
 
 let questionIndex;
 let questions

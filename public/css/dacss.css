@@ -28,7 +28,7 @@ h6 {
   flex-direction: column;
 }
 
-.chat__sidebar img {
+.chat__sidebar-img {
   width: 75%;
   align-self: center;
   padding-top: 20px;
@@ -47,6 +47,10 @@ h6 {
 .chat__sidebar.quiz-over #users {
   min-width: 80%;
   max-width: 1000px;
+}
+
+.leaderboard-img {
+  width: 25%;
 }
 
 .hidden {
@@ -85,6 +89,18 @@ button:hover {
   color: #FFE1EB;
 }
 
+.start-button-container {
+  border-bottom: 1px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFE1EB;
+  height: 50%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
 .start-button {
   font-size: 2rem;
   padding-top: 20px;
@@ -99,13 +115,32 @@ button:hover {
   padding-bottom: 20px;
 }
 
+.restart-button-container {
+  border-bottom: 1px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFE1EB;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
+
+.restart-button {
+  font-size: 2rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 400px;
+  cursor: pointer;
+}
+
 .daquestion {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 50%;
   background-color: #FFE1EB;
-  color: #ffffff;
+  color: #960000;
   border-bottom: 1px solid #ffffff;
 }
 
@@ -116,8 +151,8 @@ button:hover {
 }
 
 #daquestion .countdown-time {
-  background-color: #f7ff1a;
-  border: 5px solid #f7ff1a;
+  background-color: #960000;
+  border: 5px solid #960000;
   color: #FFE1EB;
   padding: 5px;
 }
@@ -140,24 +175,24 @@ button:hover {
 }
 
 .daquestion-responses .response-selected {
-  border: 5px solid #f7ff1a;
+  border: 5px solid #960000;
 }
 
 .daquestion-responses .correct {
-  background-color: #f7ff1a;
-  border: 5px solid #f7ff1a;
+  background-color: #960000;
+  border: 5px solid #960000;
   color: #FFE1EB;
   transform: scale(1.2);
 }
 
 .daquestion-responses .wrong {
-  background-color: #FFE1EB;
-  border: 5px solid #FFE1EB;
-  color: #FFE1EB;
+  background-color: #F9C0D0;
+  border: 5px solid #F9C0D0;
+  color: #FFFFFF;
 }
 
 .daquestion-responses .response-selected.wrong {
-  border: 5px solid #FFE1EB;
+  border: 5px solid #F9C0D0;
 }
 
 .wrong:hover {
