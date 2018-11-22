@@ -29,7 +29,9 @@ h6 {
 }
 
 .chat__sidebar img {
-  margin: 2rem auto 1rem auto;
+  width: 75%;
+  align-self: center;
+  padding-top: 20px;
 }
 
 .chat__sidebar h3 {
@@ -251,9 +253,9 @@ button:hover {
 }
 
 .image-spin {
-  -webkit-animation:spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -moz-animation:spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation:spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-animation:spin 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-animation:spin 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation:spin 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation-iteration-count: 1;
 }
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
