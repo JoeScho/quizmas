@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 const users = new Users();
-const QUIZ = 'DAQZ';
+const QUIZ = 'quizmas';
 const TIME_LIMIT = 15000
 
 let questionIndex;
@@ -63,8 +63,8 @@ io.on('connection', (socket) => {
     users.addUser(socket.id, params.name, params.room);
 
     io.to(params.room).emit('updateUserList', users.getUserList(params.room));
-    socket.emit('newMessage', generateMessage('DAQZ', 'Welcome to DAQZ'));
-    socket.broadcast.to(params.room).emit('newMessage', generateMessage('DAQZ', `${params.name} has joined`));
+    socket.emit('newMessage', generateMessage('quizmas', `Welcome to Quizmas, ${params.name}!`));
+    socket.broadcast.to(params.room).emit('newMessage', generateMessage('quizmas', `${params.name} has joined`));
     callback();
   });
 
@@ -82,7 +82,7 @@ io.on('connection', (socket) => {
     questionIndex = 0;
     questions = getQuestions();
     const { correct, ...list } = questions[questionIndex];
-    io.to("DAQZ").emit('gameStarted', list, TIME_LIMIT);
+    io.to("quizmas").emit('gameStarted', list, TIME_LIMIT);
     setQuestionCount(questionIndex);
     questionTimestamp = Date.now();
     clearTimeout(timeout);
@@ -94,11 +94,11 @@ io.on('connection', (socket) => {
     questionIndex++;
     const question = questions[questionIndex];
     if(!question){
-      io.to("DAQZ").emit('quiz-over');
+      io.to("quizmas").emit('quiz-over');
       return callback();
     }
     const { correct, ...list } = question;
-    io.to("DAQZ").emit('client:nextQuestion', list, TIME_LIMIT);
+    io.to("quizmas").emit('client:nextQuestion', list, TIME_LIMIT);
     setQuestionCount(questionIndex);
     questionTimestamp = Date.now();
     clearTimeout(timeout);

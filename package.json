@@ -1,21 +1,21 @@
 {
-  "name": "quizmas",
+  "name": "werdasht",
   "version": "1.0.0",
-  "description": "Christmas quiz!",
+  "description": "Hackathon",
   "main": "quiz.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joescho/quizmas.git"
+    "url": "git+https://github.com/getndazn/WERDASHT.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/joescho/quizmas/issues"
+    "url": "https://github.com/getndazn/WERDASHT/issues"
   },
-  "homepage": "https://github.com/joescho/quizmas#readme",
+  "homepage": "https://github.com/getndazn/WERDASHT#readme",
   "dependencies": {
     "express": "^4.16.4",
     "lodash.shuffle": "^4.2.0",
